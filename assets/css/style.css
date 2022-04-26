@@ -75,7 +75,8 @@ i {
 }
 
 .user_panel,
-.user_chat {
+.user_chat,
+.text_chat_area {
     height: 70px;
     background-color: #eaeaea;
 }
@@ -125,7 +126,8 @@ i {
     padding-left: 1rem;
 }
 
-.search_chat input:focus-visible {
+.search_chat input:focus-visible,
+.text_chat_area .text input:focus-visible {
     outline-offset: 0;
     border-color: transparent;
 }
@@ -160,6 +162,50 @@ i {
 
 .contact:hover {
     background-color: #e9ebeb;
+}
+
+
+/*  col 65 */
+
+.contact_last_message_chat {
+    color: #6B7376;
+    font-size: 0.8rem;
+}
+
+.chat_area {
+    height: calc(100% - 140px);
+    background-image: url(../img/mine.jpg);
+}
+
+.message {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.received_message,
+.sent_message {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    display: inline-block;
+}
+
+.received_message {
+    background-color: white;
+}
+
+.sent_message {
+    background-color: #D5F9BA;
+    margin-left: auto;
+}
+
+.emoji i,
+.voice i {
+    color: #6B7376;
+}
+
+.text_chat_area .text input {
+    border: none;
+    border-radius: 1rem;
 }
 
 

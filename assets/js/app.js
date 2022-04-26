@@ -15,6 +15,9 @@ const app = new Vue({ //  (option object)
 
     // data object -> array-oggetti-ecc..
     data: {
+
+        active: 0,
+
         contacts: [{
                 name: 'Michele',
                 avatar: '_1',
