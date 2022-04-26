@@ -7,7 +7,6 @@ Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare 
 Click sul contatto mostra la conversazione del contatto cliccato
  */
 
-
 const app = new Vue({ //  (option object)
 
     // proprietà
@@ -17,6 +16,8 @@ const app = new Vue({ //  (option object)
     data: {
 
         active: 0,
+
+        textInput: "",
 
         contacts: [{
                 name: 'Michele',
@@ -175,7 +176,29 @@ const app = new Vue({ //  (option object)
     },
 
     // methods object -> funzioni
-    methods: {},
+    methods: {
+        sendMessage() {
+            const data = new Date
+
+            const dataTransform = `${data.getDate()}/${data.getMonth(+1)}/${data.getFullYear()}/ ${data.getHours()}:${data.getMinutes()}:${data.getMilliseconds()}`;
+
+            const newMessage = {
+                date: dataTransform,
+                message: this.textInput,
+                status: 'sent'
+            }
+            this.contacts[this.active].messages.push(newMessage)
+
+            this.textInput = ""
+
+            if (newMessage.message < 1) {
+                this.contacts[this.active].messages.splice(this.contacts[this.active].messages.length - 1, 1)
+            }
+
+
+        },
+    },
+
 
     // mounted function -> carica da subito / mounted: function(){}
     mounted() {},

@@ -8,11 +8,6 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
 i {
     cursor: pointer;
 }
@@ -150,14 +145,25 @@ i {
     height: 60px;
 }
 
+.contact_info {
+    width: 55%;
+}
+
 .contact_last_message,
 .contact_time {
     font-size: 0.8rem;
     color: #b6b9bb;
 }
 
+.contact_last_message {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .contact_time {
-    margin-left: auto;
+    width: 20%;
+    text-align: right;
 }
 
 .contact:hover {
@@ -175,6 +181,7 @@ i {
 .chat_area {
     height: calc(100% - 140px);
     background-image: url(../img/mine.jpg);
+    overflow: auto;
 }
 
 .message {

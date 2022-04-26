@@ -33,7 +33,7 @@
                                     </strong>
                                 </div>
                             </div>
-                            <div class="user_option h-100 d-flex align-items-center gap-3">
+                            <div class="user_option h-100 d-flex align-items-center gap-4">
                                 <i class="fa-solid fa-circle-notch fa-xl"></i>
                                 <i class="fa-solid fa-message fa-xl"></i>
                                 <i class="fa-solid fa-ellipsis-vertical fa-xl"></i>
@@ -66,7 +66,7 @@
 
                         <div class="container_chat d-flex flex-column">
 
-                            <div class="contact d-flex gap-2 px-3 py-2 bb_grey" v-for="(contact, i) in contacts">
+                            <div class="contact d-flex justify-content-around gap-2 px-3 py-2 bb_grey" v-for="(contact, i) in contacts" @click="active = i">
 
                                 <div class="contact_img justify-content-center align-items-center">
 
@@ -79,12 +79,12 @@
                                         </strong>
                                     </div>
                                     <div class="contact_last_message">
-                                        {{contact.message--}}
+                                        {{contact.messages[contact.messages.length -1].message}}
                                     </div>
 
                                 </div>
-                                <div class="contact_time">
-                                    12:00
+                                <div class="contact_time ms-auto">
+                                    {{contact.messages[contact.messages.length -1].date}}
                                 </div>
                             </div>
                             <!-- /.contact -->
@@ -106,15 +106,15 @@
                             <div class="chat_info d-flex flex-column justify-content-center">
                                 <div class="contact_name">
                                     <strong>
-                                        Michele
+                                        {{contacts[active].name}}
                                     </strong>
                                 </div>
                                 <div class="contact_last_message_chat">
-                                    Ultimo messaggio alle ore?
+                                    Ultimo accesso il {{contacts[active].messages[contacts[active].messages.length -1].date}}
                                 </div>
                             </div>
 
-                            <div class="user_option h-100 d-flex align-items-center gap-3 ms-auto pe-3">
+                            <div class="user_option h-100 d-flex align-items-center gap-4 ms-auto pe-3">
                                 <i class="fa-solid fa-magnifying-glass fa-xl"></i>
                                 <i class="fa-solid fa-paperclip fa-xl"></i>
                                 <i class="fa-solid fa-ellipsis-vertical fa-xl"></i>
@@ -139,7 +139,7 @@
                             </div>
 
                             <div class="text w-100">
-                                <input type="text" class="w-100 py-2 px-2" placeholder="Scrivi un messaggio">
+                                <input type="text" class="w-100 py-2 px-2" placeholder="Scrivi un messaggio" v-model="textInput" @keyup.enter="sendMessage">
                             </div>
 
                             <div class="voice px-5">
