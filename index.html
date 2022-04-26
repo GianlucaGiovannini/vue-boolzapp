@@ -23,12 +23,14 @@
         <div id="app">
             <div class="container">
                 <div class="row row-cols-2 h-100">
-                    <div class="cols w_35 h-100">
+                    <div class="cols w_35 h-100 bg-white">
                         <div class="user_panel d-flex justify-content-between p-2">
-                            <div class="user h-100 d-flex justify-content-center align-items-center">
+                            <div class="user h-100 d-flex justify-content-center align-items-center gap-2">
                                 <img src="./assets/img/avatar_io.jpg" alt="User Avatar">
                                 <div class="user_name">
-                                    Sofia
+                                    <strong>
+                                        Sofia
+                                    </strong>
                                 </div>
                             </div>
                             <div class="user_option h-100 d-flex align-items-center gap-3">
@@ -53,21 +55,44 @@
                             </div>
                         </div>
                         <!-- /.alert_notify -->
-                        <div class="container_selection_chat h-100">
-                            <div class="search_chat p-2 d-flex">
-                                <div class="search_icon d-flex align-items-center justify-content-center">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </div>
-                                <input type="search" class="w-100" placeholder="Cerca o inizia una nuova chat">
-                            </div>
-                            <div class="container_chat">
 
+                        <div class="search_chat p-2 d-flex">
+                            <div class="search_icon d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
-                            <!-- /.container_chat -->
+                            <input type="search" class="w-100" placeholder="Cerca o inizia una nuova chat">
+                        </div>
+                        <!-- /.search_chat -->
+                        <div class="container_chat d-flex flex-column">
+
+                            <div class="contact d-flex gap-2 px-3 py-2 bb_grey" v-for="(contact, i) in contacts">
+
+                                <div class="contact_img justify-content-center align-items-center">
+
+                                    <img :src="'./assets/img/avatar'+contact.avatar+'.jpg'" :alt="contact.name + 'avatar'">
+                                </div>
+                                <div class="contact_info d-flex flex-column">
+                                    <div class="contact_name">
+                                        <strong>
+                                            {{contact.name}}
+                                        </strong>
+                                    </div>
+                                    <div class="contact_last_message">
+                                        {{contact.message}}
+                                    </div>
+
+                                </div>
+                                <div class="contact_time">
+                                    12:00
+                                </div>
+                            </div>
+                            <!-- /.contact -->
+
+
 
 
                         </div>
-                        <!-- /.container_selection_chat -->
+                        <!-- /.container_chat -->
                     </div>
                     <!-- /.cols -->
 
