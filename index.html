@@ -55,16 +55,16 @@
                         <!-- /.alert_notify -->
 
                         <div class="search_chat p-2 d-flex">
-                            <div class="search_icon d-flex align-items-center justify-content-center">
+                            <div class="search_icon d-flex align-items-center justify-content-center" @click="filterVisibility">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
-                            <input type="search" class="w-100" v-model="search" placeholder="Cerca o inizia una nuova chat">
+                            <input type="search" class="w-100" v-model="search" placeholder="Cerca o inizia una nuova chat" @keyup="filterVisibility">
                         </div>
                         <!-- /.search_chat -->
 
                         <div class="container_chat d-flex flex-column">
 
-                            <div :class="i === active ? 'active' : '' " class="contact d-flex justify-content-around gap-2 px-3 py-2 bb_grey" v-for="(contact, i) in filteredChat" @click="active = i">
+                            <div :class="i === active ? 'active' : '' " class="contact d-flex justify-content-around gap-2 px-3 py-2 bb_grey" v-for="(contact, i) in contacts" v-if="contact.visible" @click="active = i">
 
 
                                 <div class="contact_img justify-content-center align-items-center">
@@ -99,17 +99,17 @@
                     <div class="cols w_65 h-100">
                         <div class="user_chat d-flex p-2 gap-2">
                             <div class="user_active_chat">
-                                <img :src="'./assets/img/avatar'+filteredChat[active].avatar+'.jpg'" alt="">
+                                <img :src="'./assets/img/avatar'+contacts[active].avatar+'.jpg'" alt="">
                             </div>
 
                             <div class="chat_info d-flex flex-column justify-content-center">
                                 <div class="contact_name">
                                     <strong>
-                                        {{filteredChat[active].name}}
+                                        {{contacts[active].name}}
                                     </strong>
                                 </div>
                                 <div class="contact_last_message_chat">
-                                    Ultimo accesso il {{filteredChat[active].messages[filteredChat[active].messages.length -1].date}}
+                                    Ultimo accesso il {{contacts[active].messages[contacts[active].messages.length -1].date}}
                                 </div>
                             </div>
 
@@ -123,7 +123,7 @@
                         <!-- /.user_chat -->
 
                         <div class="chat_area p-4">
-                            <div class="message d-flex" v-for="(message, i) in filteredChat[active].messages">
+                            <div class="message d-flex" v-for="(message, i) in contacts[active].messages">
                                 <div :class="message.status == 'sent'? 'sent_message' : 'received_message'">
                                     {{message.message}}
                                     <span class="message_option" @click="messageOption(i)">

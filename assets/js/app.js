@@ -258,26 +258,22 @@ const app = new Vue({ //  (option object)
             this.contacts[this.active].messages.splice(i, 1)
         },
 
+        filterVisibility() {
+            this.contacts.forEach(contact => {
+                if (contact.name.toLowerCase().includes(this.search.toLowerCase())) {
+                    contact.visible = true
+                } else {
+                    contact.visible = false
+                }
 
-        /*  // prova per prendere le ore
-         hours(i) {
-             this.contacts[i].messages.date.substring(11, 5)
-             console.log(this.contacts[i].messages.date.substring(11, 5))
-         } */
-    },
-
-    computed: {
-        filteredChat() {
-            return this.contacts.filter(message => {
-                return message.name.toLowerCase().includes(this.search.toLowerCase())
             })
+
         },
 
+    }
 
 
-    },
 
-    // mounted function -> carica da subito / mounted: function(){}
-    mounted() {},
+
 
 });
