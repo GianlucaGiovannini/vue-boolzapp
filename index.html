@@ -123,7 +123,7 @@
                         <!-- /.user_chat -->
 
                         <div class="chat_area p-4">
-                            <div class="message d-flex" v-for="(message, i) in contacts[active].messages">
+                            <div class="message d-flex" v-for="(message, i) in filteredChat[active].messages">
                                 <div :class="message.status == 'sent'? 'sent_message' : 'received_message'">
                                     {{message.message}}
                                     <span class="message_option" @click="messageOption(i)">

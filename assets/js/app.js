@@ -273,6 +273,8 @@ const app = new Vue({ //  (option object)
             })
         },
 
+
+
     },
 
     // mounted function -> carica da subito / mounted: function(){}
