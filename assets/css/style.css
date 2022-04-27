@@ -198,9 +198,13 @@ i {
 
 .received_message,
 .sent_message {
-    padding: 0.5rem 1rem;
+    max-width: 500px;
+    padding: 0.9rem 4.5rem 0.9rem 0.9rem;
     border-radius: 1rem;
     display: inline-block;
+    position: relative;
+    word-break: break-all;
+    box-shadow: 1px 1px 4px 0px black;
 }
 
 .received_message {
@@ -210,6 +214,54 @@ i {
 .sent_message {
     background-color: #D5F9BA;
     margin-left: auto;
+}
+
+.message_option {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.8rem;
+    color: #6b7376;
+}
+
+.message_time {
+    position: absolute;
+    bottom: 0.3rem;
+    right: 1rem;
+    font-size: 0.75rem;
+}
+
+.received_message .message_details {
+    right: -75%;
+    top: 50%;
+    z-index: 1;
+}
+
+.sent_message .message_details {
+    right: -5%;
+    top: 50%;
+    z-index: 1;
+}
+
+.message_details {
+    width: 170px;
+    background-color: white;
+    display: none;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 7px 0px #776969;
+    position: absolute;
+}
+
+.message_details div {
+    padding: 0.5rem;
+}
+
+.delete {
+    cursor: pointer;
+}
+
+.delete:hover {
+    font-weight: 600;
 }
 
 .emoji i,

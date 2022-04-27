@@ -17,7 +17,6 @@
 
 <body>
     <main id="site_main">
-        <!-- /.background_top -->
 
         <div id="app">
             <div class="container">
@@ -125,9 +124,20 @@
 
                         <div class="chat_area p-4">
                             <div class="message d-flex" v-for="(message, i) in contacts[active].messages">
-                                <span :class="message.status == 'sent'? 'sent_message' : 'received_message'">
+                                <div :class="message.status == 'sent'? 'sent_message' : 'received_message'">
                                     {{message.message}}
-                                </span>
+                                    <span class="message_option" @click="messageOption(i)">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </span>
+                                    <span class="message_time">
+                                        {{message.hours}}
+                                    </span>
+                                    <div class="message_details" :class="message.optionMessage === true ? 'd-block' : ''">
+                                        <div>Message info</div>
+                                        <div class="delete" @click="deleteMessage(i)">Delete message</div>
+                                    </div>
+                                </div>
+
 
                             </div>
                         </div>
