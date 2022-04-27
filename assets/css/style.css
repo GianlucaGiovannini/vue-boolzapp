@@ -161,8 +161,20 @@ i {
     text-align: right;
 }
 
+.active {
+    background-color: #e9ebeb;
+}
+
+.active img {
+    background-color: white;
+}
+
 .contact:hover {
     background-color: #e9ebeb;
+}
+
+.contact:hover img {
+    background-color: white;
 }
 
 
