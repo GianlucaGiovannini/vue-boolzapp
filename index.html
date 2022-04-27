@@ -100,17 +100,17 @@
                     <div class="cols w_65 h-100">
                         <div class="user_chat d-flex p-2 gap-2">
                             <div class="user_active_chat">
-                                <img src="./assets/img/avatar_1.jpg" alt="">
+                                <img :src="'./assets/img/avatar'+filteredChat[active].avatar+'.jpg'" alt="">
                             </div>
 
                             <div class="chat_info d-flex flex-column justify-content-center">
                                 <div class="contact_name">
                                     <strong>
-                                        {{contacts[active].name}}
+                                        {{filteredChat[active].name}}
                                     </strong>
                                 </div>
                                 <div class="contact_last_message_chat">
-                                    Ultimo accesso il {{contacts[active].messages[contacts[active].messages.length -1].date}}
+                                    Ultimo accesso il {{filteredChat[active].messages[filteredChat[active].messages.length -1].date}}
                                 </div>
                             </div>
 

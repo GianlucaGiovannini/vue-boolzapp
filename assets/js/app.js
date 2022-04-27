@@ -208,7 +208,6 @@ const app = new Vue({ //  (option object)
 
             const newMessage = {
                 date: this.dataTransform,
-
                 hours: this.hoursTransform,
                 message: this.textInput,
                 status: 'sent'
@@ -223,12 +222,11 @@ const app = new Vue({ //  (option object)
                 const replyMessage = {
                     date: dataTransform,
                     hours: hoursTransform,
-                    message: "Ti rispondo per cortesia 🤣",
+                    message: "ok 😉",
                     status: 'recieved'
                 }
 
-                setTimeout(this.contacts[this.active].messages.push(replyMessage), 3000)
-
+                setTimeout(() => { this.contacts[this.active].messages.push(replyMessage) }, 1000)
 
             }
 
