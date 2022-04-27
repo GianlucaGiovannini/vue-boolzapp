@@ -36,13 +36,8 @@ i {
 #site_main {
     width: 100%;
     height: 100vh;
-    background-color: #d8dbd7;
+    background-image: linear-gradient(to bottom, #009688 0px, #009688 140px, #d8dbd7 140px, #d8dbd7 100%);
     position: relative;
-}
-
-.background_top {
-    height: 20vh;
-    background-color: #009688;
 }
 
 
