@@ -205,12 +205,11 @@ const app = new Vue({ //  (option object)
             const dataTransform = `${data.getDate()}/${data.getMonth(+1)}/${data.getFullYear()}/ ${data.getHours()}:${data.getMinutes()}:${data.getMilliseconds()}`;
 
             const hoursTransform = `${data.getHours()}:${data.getMinutes()}`
-            console.log(hoursTransform)
 
             const newMessage = {
-                date: dataTransform,
-                hours: "",
-                hours: hoursTransform,
+                date: this.dataTransform,
+
+                hours: this.hoursTransform,
                 message: this.textInput,
                 status: 'sent'
             }
@@ -220,13 +219,27 @@ const app = new Vue({ //  (option object)
 
             if (newMessage.message < 1) {
                 this.contacts[this.active].messages.splice(this.contacts[this.active].messages.length - 1, 1)
+            } else {
+                const replyMessage = {
+                    date: dataTransform,
+                    hours: hoursTransform,
+                    message: "Ti rispondo per cortesia 🤣",
+                    status: 'recieved'
+                }
+
+                setTimeout(this.contacts[this.active].messages.push(replyMessage), 3000)
+
+
             }
+
         },
-        // prova per prendere le ore
-        hours(i) {
-            this.contacts[i].messages.date.substring(11, 5)
-            console.log(this.contacts[i].messages.date.substring(11, 5))
-        }
+
+
+        /*  // prova per prendere le ore
+         hours(i) {
+             this.contacts[i].messages.date.substring(11, 5)
+             console.log(this.contacts[i].messages.date.substring(11, 5))
+         } */
     },
 
     computed: {
