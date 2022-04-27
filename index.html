@@ -60,13 +60,14 @@
                             <div class="search_icon d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
-                            <input type="search" class="w-100" placeholder="Cerca o inizia una nuova chat">
+                            <input type="search" class="w-100" v-model="search" placeholder="Cerca o inizia una nuova chat">
                         </div>
                         <!-- /.search_chat -->
 
                         <div class="container_chat d-flex flex-column">
 
-                            <div class="contact d-flex justify-content-around gap-2 px-3 py-2 bb_grey" v-for="(contact, i) in contacts" @click="active = i">
+                            <div class="contact d-flex justify-content-around gap-2 px-3 py-2 bb_grey" v-for="(contact, i) in filteredChat" @click="active = i">
+                                <!-- :class="index === active ? ''active" : '' " -->
 
                                 <div class="contact_img justify-content-center align-items-center">
 
@@ -81,10 +82,10 @@
                                     <div class="contact_last_message">
                                         {{contact.messages[contact.messages.length -1].message}}
                                     </div>
-
                                 </div>
+
                                 <div class="contact_time ms-auto">
-                                    {{contact.messages[contact.messages.length -1].date}}
+                                    {{contact.messages[contact.messages.length -1].hours}}
                                 </div>
                             </div>
                             <!-- /.contact -->
@@ -124,9 +125,9 @@
                         <!-- /.user_chat -->
 
                         <div class="chat_area p-4">
-                            <div class="message d-flex" v-for="(contact, i) in contacts[active].messages">
-                                <span :class="contact.status == 'sent'? 'sent_message' : 'received_message'">
-                                    {{contact.message}}
+                            <div class="message d-flex" v-for="(message, i) in contacts[active].messages">
+                                <span :class="message.status == 'sent'? 'sent_message' : 'received_message'">
+                                    {{message.message}}
                                 </span>
 
                             </div>
