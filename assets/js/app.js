@@ -258,14 +258,7 @@ const app = new Vue({ //  (option object)
 
         deleteMessage(i) {
 
-
-            if (this.contacts[this.active].messages.length == 0) {
-                this.contacts[this.active].messages = [""]
-
-            } else {
-                this.contacts[this.active].messages.splice(i, 1)
-            }
-
+            this.contacts[this.active].messages.splice(i, 1)
         },
 
         filterVisibility() {
