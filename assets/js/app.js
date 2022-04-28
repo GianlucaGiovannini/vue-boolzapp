@@ -14,6 +14,16 @@ const app = new Vue({ //  (option object)
 
         replyList: ["ok 😉", "ho da fare ora!", "VueJs è bello ma a volte fa impazzire", "no!"],
 
+        isWrite: {
+            activeWrite: false,
+            textWrite: "Sta scrivendo ...",
+        },
+
+        isOnline: {
+            online: false,
+            textOnline: "Online",
+        },
+
         contacts: [{
                 name: 'Michele',
                 avatar: '_1',
@@ -232,6 +242,10 @@ const app = new Vue({ //  (option object)
 
             this.textInput = ""
 
+            this.onlineUser()
+            this.userStartWrite()
+
+
             if (newMessage.message < 1) {
                 this.contacts[this.active].messages.splice(this.contacts[this.active].messages.length - 1, 1)
             } else {
@@ -243,7 +257,14 @@ const app = new Vue({ //  (option object)
                     optionMessage: false,
                 }
 
-                setTimeout(() => { this.contacts[this.active].messages.push(replyMessage) }, 1000)
+                setTimeout(() => {
+                    this.contacts[this.active].messages.push(replyMessage)
+                    this.userStopWrite()
+                }, 1000)
+
+                setTimeout(() => {
+                    this.offlineUser()
+                }, 4000)
             }
 
         },
@@ -257,7 +278,6 @@ const app = new Vue({ //  (option object)
         },
 
         deleteMessage(i) {
-
             this.contacts[this.active].messages.splice(i, 1)
         },
 
@@ -271,6 +291,22 @@ const app = new Vue({ //  (option object)
 
             })
 
+        },
+
+        onlineUser() {
+            this.isOnline.online = true
+        },
+
+        offlineUser() {
+            this.isOnline.online = false
+        },
+
+        userStartWrite() {
+            this.isWrite.activeWrite = true
+        },
+
+        userStopWrite() {
+            this.isWrite.activeWrite = false
         },
     }
 

@@ -231,7 +231,7 @@ i {
 }
 
 .received_message .message_details {
-    right: -75%;
+    left: 70%;
     top: 50%;
     z-index: 1;
 }

@@ -105,15 +105,23 @@
                                         {{contacts[active].name}}
                                     </strong>
                                 </div>
-                                <div class="contact_last_message_chat" v-if="contacts[active].messages.length >= 1">
+                                <div class="contact_last_message_chat" v-if="isOnline.online">
+                                    <div v-if="isWrite.activeWrite">
+                                        {{isWrite.textWrite}}
+                                    </div>
+                                    <div v-else>
+                                        {{isOnline.textOnline}}
+                                    </div>
+                                </div>
+                                <div class="contact_last_message_chat" v-else-if="contacts[active].messages.length >= 1">
                                     Ultimo accesso il {{contacts[active].messages[contacts[active].messages.length -1].date}}
                                 </div>
                             </div>
 
-                            <div class="user_option h-100 d-flex align-items-center gap-4 ms-auto pe-3">
-                                <i class="fa-solid fa-magnifying-glass fa-xl"></i>
-                                <i class="fa-solid fa-paperclip fa-xl"></i>
-                                <i class="fa-solid fa-ellipsis-vertical fa-xl"></i>
+                            <div class="user_option h-100 d-flex align-items-center gap-2 ms-auto pe-3">
+                                <i class="fa-solid fa-magnifying-glass fa-xl p-2"></i>
+                                <i class="fa-solid fa-paperclip fa-xl p-2"></i>
+                                <i class="fa-solid fa-ellipsis-vertical fa-xl p-2"></i>
                             </div>
 
                         </div>
