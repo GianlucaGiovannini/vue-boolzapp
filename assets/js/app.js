@@ -323,6 +323,19 @@ const app = new Vue({ //  (option object)
             this.optionChatActive = false
         },
 
+        deleteContact() {
+            if (this.contacts.length == 1) {
+                this.contacts.splice(this.active, 1)
+                this.optionChatActive = false
+                this.newContactTab = true
+            } else {
+                this.contacts.splice(this.active, 1)
+                this.optionChatActive = false
+            }
+
+
+        },
+
         filterVisibility() {
             this.contacts.forEach(contact => {
                 if (contact.name.toLowerCase().includes(this.search.toLowerCase())) {

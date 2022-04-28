@@ -65,7 +65,8 @@
                         </div>
                         <!-- /.search_chat -->
 
-                        <div class="container_chat d-flex flex-column">
+                        <div class="container_chat" v-if="contacts.length === 0"></div>
+                        <div class="container_chat d-flex flex-column" v-else>
 
                             <div :class="i === active ? 'active' : '' " class="contact d-flex gap-2 px-3 py-2 bb_grey" v-for="(contact, i) in contacts" v-if="contact.visible" @click="active = i">
 
@@ -97,6 +98,7 @@
                     <!-- /.cols -->
 
                     <div class="cols w_65 h-100 position-relative">
+
                         <div class="tab_new_contact p-2 h-100 w-100 d-flex justify-content-center align-items-center" v-if="newContactTab" :class="newContactTab ? 'visible' : ''">
                             <div class="new_contact bg-white position-relative">
                                 <div class="icon_tab_contact" @click="leaveTabNewContact">
@@ -121,7 +123,9 @@
                             </div>
                         </div>
                         <!-- /.tab_new_contact -->
-                        <div class="user_chat d-flex p-2 gap-2">
+
+                        <div class="user_chat" v-if="contacts.length === 0"></div>
+                        <div class="user_chat d-flex p-2 gap-2" v-else>
                             <div class="user_active_chat">
                                 <img v-if="contacts[active].avatar.includes('_')" :src="'./assets/img/avatar'+contacts[active].avatar+'.jpg'" :alt="contacts[active].name + ' avatar'">
 
@@ -158,13 +162,15 @@
                                     <div>Disattiva notifiche</div>
                                     <div>Sfondo</div>
                                     <div @click="deleteChat">Svuota Chat</div>
+                                    <div @click="deleteContact">Elimina contatto</div>
                                 </div>
                             </div>
 
                         </div>
                         <!-- /.user_chat -->
 
-                        <div class="chat_area p-4">
+                        <div class="chat_area" v-if="contacts.length === 0"></div>
+                        <div class="chat_area p-4" v-else>
                             <div class="message d-flex" v-for="(message, i) in contacts[active].messages">
 
                                 <div :class="message.status == 'sent'? 'sent_message' : 'received_message'">
@@ -185,7 +191,8 @@
                         </div>
                         <!-- /.chat_area -->
 
-                        <div class="text_chat_area d-flex align-items-center justify-content-around">
+                        <div class="text_chat_area" v-if="contacts.length === 0"></div>
+                        <div class="text_chat_area d-flex align-items-center justify-content-around" v-else>
                             <div class="emoji px-5">
                                 <i class="fa-regular fa-face-smile fa-xl"></i>
                             </div>

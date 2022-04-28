@@ -274,7 +274,7 @@ i {
     display: inline-block;
     position: relative;
     word-break: break-all;
-    box-shadow: 1px 1px 4px 0px black;
+    /* box-shadow: 1px 1px 4px 0px black; */
 }
 
 .received_message {
