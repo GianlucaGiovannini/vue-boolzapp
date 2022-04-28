@@ -8,9 +8,11 @@ const app = new Vue({ //  (option object)
 
         active: 0,
 
+        search: "",
+
         textInput: "",
 
-        search: "",
+        replyList: ["ok 😉", "ho da fare ora!", "VueJs è bello ma a volte fa impazzire", "no!"],
 
         contacts: [{
                 name: 'Michele',
@@ -236,7 +238,7 @@ const app = new Vue({ //  (option object)
                 const replyMessage = {
                     date: dataTransform,
                     hours: hoursTransform,
-                    message: "ok 😉",
+                    message: this.replyList[Math.floor(Math.random() * (this.replyList.length - 1 + 1))],
                     status: 'recieved',
                     optionMessage: false,
                 }
@@ -269,11 +271,6 @@ const app = new Vue({ //  (option object)
             })
 
         },
-
     }
-
-
-
-
 
 });

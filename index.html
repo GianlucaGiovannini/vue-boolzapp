@@ -88,9 +88,6 @@
                             </div>
                             <!-- /.contact -->
 
-
-
-
                         </div>
                         <!-- /.container_chat -->
                     </div>
@@ -124,6 +121,7 @@
 
                         <div class="chat_area p-4">
                             <div class="message d-flex" v-for="(message, i) in contacts[active].messages">
+                                <!-- v-if=" message.length >= 1" -->
                                 <div :class="message.status == 'sent'? 'sent_message' : 'received_message'">
                                     {{message.message}}
                                     <span class="message_option" @click="messageOption(i)">
@@ -137,7 +135,6 @@
                                         <div class="delete" @click="deleteMessage(i)">Delete message</div>
                                     </div>
                                 </div>
-
 
                             </div>
                         </div>
@@ -153,7 +150,8 @@
                             </div>
 
                             <div class="voice px-5">
-                                <i class="fa-solid fa-microphone fa-xl"></i>
+                                <i class="fa-solid fa-paper-plane fa-xl" v-if="textInput.length > 0" @click="sendMessage"></i>
+                                <i class="fa-solid fa-microphone fa-xl" v-else></i>
                             </div>
 
                         </div>
