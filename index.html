@@ -31,10 +31,13 @@
                                     </strong>
                                 </div>
                             </div>
-                            <div class="user_option h-100 d-flex align-items-center gap-4">
-                                <i class="fa-solid fa-circle-notch fa-xl"></i>
-                                <i class="fa-solid fa-message fa-xl"></i>
-                                <i class="fa-solid fa-ellipsis-vertical fa-xl"></i>
+                            <div class="user_option position-relative h-100 d-flex align-items-center gap-2">
+                                <i class="fa-solid fa-circle-notch fa-xl p-2"></i>
+                                <i class="fa-solid fa-message fa-xl p-2"></i>
+                                <i class="fa-solid fa-ellipsis-vertical fa-xl p-2" @click="openOptionUser"></i>
+                                <div class="chat_option option_user bg-white" :class="optionUserActive === true ? 'd-block' : ''">
+                                    <div @click="openTabNewContact">Crea nuova Chat</div>
+                                </div>
                             </div>
                         </div>
                         <!-- /.user_panel -->
@@ -68,8 +71,8 @@
 
 
                                 <div class="contact_img justify-content-center align-items-center">
-
-                                    <img :src="'./assets/img/avatar'+contact.avatar+'.jpg'" :alt="contact.name + 'avatar'">
+                                    <img v-if="contact.avatar.includes('_')" :src="'./assets/img/avatar'+contact.avatar+'.jpg'" :alt="contact.name + ' avatar'">
+                                    <img v-else :src="contact.avatar" :alt="contact.name + ' avatar'" class="img-fluid">
                                 </div>
                                 <div class="contact_info d-flex flex-column">
                                     <div class="contact_name">
@@ -93,10 +96,36 @@
                     </div>
                     <!-- /.cols -->
 
-                    <div class="cols w_65 h-100">
+                    <div class="cols w_65 h-100 position-relative">
+                        <div class="tab_new_contact p-2 h-100 w-100 d-flex justify-content-center align-items-center" v-if="newContactTab" :class="newContactTab ? 'visible' : ''">
+                            <div class="new_contact bg-white position-relative">
+                                <div class="icon_tab_contact" @click="leaveTabNewContact">
+                                    <i class="fa-solid fa-circle-xmark fa-2xl"></i>
+                                </div>
+                                <div class="new_contact_input h-100 d-flex flex-column justify-content-center">
+                                    <h3 class="text-center mb-5">Aggiungi un nuovo contatto</h3>
+                                    <form>
+                                        <div>
+                                            <label class="d-block px-4" for="name">Inserisci il nome</label>
+                                            <input class="w-100 p-2" type="text" v-model="newContactName" name="name">
+                                        </div>
+                                        <div>
+                                            <label class="d-block px-4" for="img">Inserisci url dell'immagine</label>
+                                            <input class="w-100 p-2" type="text" v-model="newContactImg" name="img">
+                                        </div>
+                                        <div class="text-center">
+                                            <button class="w-25 btn btn-dark mt-3" @click.prevent="addNewContact">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.tab_new_contact -->
                         <div class="user_chat d-flex p-2 gap-2">
                             <div class="user_active_chat">
-                                <img :src="'./assets/img/avatar'+contacts[active].avatar+'.jpg'" alt="">
+                                <img v-if="contacts[active].avatar.includes('_')" :src="'./assets/img/avatar'+contacts[active].avatar+'.jpg'" :alt="contacts[active].name + ' avatar'">
+
+                                <img v-else :src="contacts[active].avatar" :alt="contacts[active].name + ' avatar'" class="img-fluid img_active_chat">
                             </div>
 
                             <div class="chat_info d-flex flex-column justify-content-center">
@@ -118,10 +147,18 @@
                                 </div>
                             </div>
 
-                            <div class="user_option h-100 d-flex align-items-center gap-2 ms-auto pe-3">
+                            <div class="user_option position-relative h-100 d-flex align-items-center gap-2 ms-auto pe-3">
                                 <i class="fa-solid fa-magnifying-glass fa-xl p-2"></i>
                                 <i class="fa-solid fa-paperclip fa-xl p-2"></i>
-                                <i class="fa-solid fa-ellipsis-vertical fa-xl p-2"></i>
+                                <i class="fa-solid fa-ellipsis-vertical fa-xl p-2" @click="openOptionChat"></i>
+                                <div class="chat_option option_chat bg-white" :class="optionChatActive === true ? 'd-block' : ''">
+                                    <div>Info contatto</div>
+                                    <div>Media</div>
+                                    <div>Cerca</div>
+                                    <div>Disattiva notifiche</div>
+                                    <div>Sfondo</div>
+                                    <div @click="deleteChat">Svuota Chat</div>
+                                </div>
                             </div>
 
                         </div>

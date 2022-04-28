@@ -27,6 +27,28 @@ i {
     border-bottom: 2px solid #f5f5f5;
 }
 
+.chat_option {
+    width: 190px;
+    padding: 1rem 1.25rem;
+    display: none;
+    position: absolute;
+    text-align: right;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    z-index: 1;
+}
+
+.chat_option.option_user {
+    right: 0.8rem;
+    top: 2.6rem;
+}
+
+.chat_option.option_chat {
+    right: 1.8rem;
+    top: 2.6rem;
+}
+
 
 /* #endregion utility */
 
@@ -140,6 +162,11 @@ i {
     height: 60px;
 }
 
+.img_active_chat {
+    width: 60px;
+    height: 60px;
+}
+
 .contact_info {
     width: 55%;
 }
@@ -179,6 +206,49 @@ i {
 
 
 /*  col 65 */
+
+.tab_new_contact {
+    visibility: hidden;
+    background-color: rgb(0 0 0 / 41%);
+    position: absolute;
+    z-index: 1;
+}
+
+.new_contact {
+    border-radius: 1rem;
+    width: 70%;
+    height: 50%;
+}
+
+.new_contact_input div {
+    width: 100%;
+    padding: 0 3rem;
+    margin: 1rem 0;
+}
+
+.icon_tab_contact {
+    width: 28px;
+    height: 20px;
+    background: white;
+    border-radius: 100%;
+    position: absolute;
+    right: -33px;
+    top: -40px;
+}
+
+.icon_tab_contact i {
+    color: black;
+}
+
+.chat_option div {
+    color: black;
+    margin: 0.7rem 0;
+    cursor: pointer;
+}
+
+.chat_option div:hover {
+    transform: scale(1.1);
+}
 
 .contact_last_message_chat {
     color: #6B7376;

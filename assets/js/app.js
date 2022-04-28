@@ -8,6 +8,16 @@ const app = new Vue({ //  (option object)
 
         active: 0,
 
+        optionChatActive: false,
+
+        optionUserActive: false,
+
+        newContactTab: false,
+
+        newContactName: "",
+
+        newContactImg: "",
+
         search: "",
 
         textInput: "",
@@ -277,8 +287,40 @@ const app = new Vue({ //  (option object)
             }
         },
 
+        openOptionChat() {
+            if (this.optionChatActive === false) {
+                this.optionChatActive = true
+            } else {
+                this.optionChatActive = false
+            }
+        },
+
+        openOptionUser() {
+            if (this.optionUserActive === false) {
+                this.optionUserActive = true
+            } else {
+                this.optionUserActive = false
+            }
+        },
+
+        openTabNewContact() {
+            console.log("ciao")
+            this.newContactTab = true
+            this.optionUserActive = false
+
+        },
+
+        leaveTabNewContact() {
+            this.newContactTab = false
+        },
+
         deleteMessage(i) {
             this.contacts[this.active].messages.splice(i, 1)
+        },
+
+        deleteChat() {
+            this.contacts[this.active].messages = []
+            this.optionChatActive = false
         },
 
         filterVisibility() {
@@ -307,6 +349,33 @@ const app = new Vue({ //  (option object)
 
         userStopWrite() {
             this.isWrite.activeWrite = false
+        },
+
+        addNewContact() {
+
+            if (this.newContactName < 1) {
+                this.newContactName = ""
+                this.newContactImg = ""
+            } else if (this.newContactImg < 1) {
+                this.newContactName = ""
+                this.newContactImg = ""
+            } else {
+                const newContact = {
+                    name: this.newContactName,
+                    avatar: this.newContactImg,
+                    visible: true,
+                    messages: []
+                }
+
+                this.newContactName = ""
+                this.newContactImg = ""
+
+                this.contacts.push(newContact)
+
+                this.newContactTab = false
+
+            }
+
         },
     }
 
