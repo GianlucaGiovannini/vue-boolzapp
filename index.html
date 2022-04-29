@@ -190,7 +190,7 @@
                         </div>
                         <!-- /.chat_area -->
 
-                        <div class="text_chat_area" v-if="contacts.length === 0"></div>
+                        <div class="text_chat_area" v-if="contacts.length === 0 || active === false"></div>
                         <div class="text_chat_area d-flex align-items-center justify-content-around" v-else>
                             <div class="emoji px-5">
                                 <i class="fa-regular fa-face-smile fa-xl"></i>
