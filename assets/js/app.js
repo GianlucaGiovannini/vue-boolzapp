@@ -6,7 +6,7 @@ const app = new Vue({ //  (option object)
     // data object -> array-oggetti-ecc..
     data: {
 
-        active: 0,
+        active: false,
 
         optionChatActive: false,
 
@@ -255,7 +255,7 @@ const app = new Vue({ //  (option object)
             this.onlineUser()
             this.userStartWrite()
 
-
+            /* pattern="\s*(\S\s*){1,} */
             if (newMessage.message < 1) {
                 this.contacts[this.active].messages.splice(this.contacts[this.active].messages.length - 1, 1)
             } else {
@@ -304,7 +304,6 @@ const app = new Vue({ //  (option object)
         },
 
         openTabNewContact() {
-            console.log("ciao")
             this.newContactTab = true
             this.optionUserActive = false
 
@@ -326,10 +325,12 @@ const app = new Vue({ //  (option object)
         deleteContact() {
             if (this.contacts.length == 1) {
                 this.contacts.splice(this.active, 1)
+                this.active = false
                 this.optionChatActive = false
                 this.newContactTab = true
             } else {
                 this.contacts.splice(this.active, 1)
+                this.active = false
                 this.optionChatActive = false
             }
 

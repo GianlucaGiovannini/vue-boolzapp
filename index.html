@@ -21,6 +21,7 @@
         <div id="app">
             <div class="container">
                 <div class="row row-cols-2 h-100">
+
                     <div class="cols w_35 h-100 bg-white">
                         <div class="user_panel d-flex justify-content-between p-2">
                             <div class="user h-100 d-flex justify-content-center align-items-center gap-2">
@@ -69,8 +70,6 @@
                         <div class="container_chat d-flex flex-column" v-else>
 
                             <div :class="i === active ? 'active' : '' " class="contact d-flex gap-2 px-3 py-2 bb_grey" v-for="(contact, i) in contacts" v-if="contact.visible" @click="active = i">
-
-
                                 <div class="contact_img justify-content-center align-items-center">
                                     <img v-if="contact.avatar.includes('_')" :src="'./assets/img/avatar'+contact.avatar+'.jpg'" :alt="contact.name + ' avatar'">
                                     <img v-else :src="contact.avatar" :alt="contact.name + ' avatar'" class="img-fluid">
@@ -124,7 +123,7 @@
                         </div>
                         <!-- /.tab_new_contact -->
 
-                        <div class="user_chat" v-if="contacts.length === 0"></div>
+                        <div class="user_chat" v-if="contacts.length === 0 || active === false"></div>
                         <div class="user_chat d-flex p-2 gap-2" v-else>
                             <div class="user_active_chat">
                                 <img v-if="contacts[active].avatar.includes('_')" :src="'./assets/img/avatar'+contacts[active].avatar+'.jpg'" :alt="contacts[active].name + ' avatar'">
@@ -169,7 +168,7 @@
                         </div>
                         <!-- /.user_chat -->
 
-                        <div class="chat_area" v-if="contacts.length === 0"></div>
+                        <div class="chat_area" v-if="contacts.length === 0 || active === false"></div>
                         <div class="chat_area p-4" v-else>
                             <div class="message d-flex" v-for="(message, i) in contacts[active].messages">
 
